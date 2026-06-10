@@ -11,7 +11,7 @@
 Este projeto consiste na implementação de um sistema de e-commerce e retaguarda para a loja virtual **R&N Moda Feminina**. O sistema foi desenvolvido em Python utilizando o paradigma de Orientação a Objetos, com uma interface gráfica rica em **Tkinter** que simula os fluxos de login, navegação de produtos, gerenciamento de carrinho, finalização de compra com geração de nota fiscal e um painel de controle administrativo.
 
 O projeto atende integralmente a todos os requisitos solicitados na disciplina:
-- Mínimo de 5 classes (foram desenvolvidas 7 classes centrais de modelo: `Produto`, `Roupa`, `Calçado`, `Usuario`, `Cliente`, `Carrinho` e `Pedido`).
+- Mínimo de 5 classes (foram desenvolvidas 8 classes centrais de modelo: `Produto`, `Roupa`, `Calçado`, `Usuario`, `Cliente`, `Administrador`, `Carrinho` e `Pedido`)
 - Utilização de **Associação**, **Herança** e **Polimorfismo**.
 - Interação por parte do usuário (dados digitados na interface).
 - Criação de diagramas de classe e objetos (disponibilizados em formato Mermaid no diretório).
