@@ -19,6 +19,12 @@ classDiagram
     }
     Usuario <|-- Cliente : Herança
 
+    %% Classe Administrador (Herança de Usuario)
+    class Administrador {
+        +cargo: str
+    }
+    Usuario <|-- Administrador : Herança
+
     %% Classe Carrinho
     class Carrinho {
         +itens: dict
