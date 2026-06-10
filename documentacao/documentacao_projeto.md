@@ -34,6 +34,7 @@ A herança é utilizada para reaproveitar propriedades e comportamentos comuns e
 2. **Usuários**:
    - `Usuario` ([usuario.py](file:///C:/Users/rafaela.gotardo/.gemini/antigravity-ide/scratch/rn_moda_feminina/models/usuario.py)) é a superclasse de autenticação contendo `cpf`, `nome`, `email`, `senha` e o método `fazerLogin()`.
    - `Cliente` herda de `Usuario` e expande o modelo adicionando um `endereco` de entrega e associando a ele um objeto de `Carrinho`.
+   - `Administrador` herda de `Usuario` e expande o modelo adicionando um `cargo` administrativo. Apenas usuários do tipo administrador possuem acesso ao painel de gerenciamento no sistema.
 
 ### B. Polimorfismo (Polymorphism)
 O polimorfismo permite que métodos com a mesma assinatura tenham comportamentos diferentes dependendo da classe que os executa.
@@ -83,8 +84,12 @@ As associações definem os relacionamentos e a dependência de ciclo de vida en
 ### `Cliente` (Subclasse)
 - **Atributos**: Herda `Usuario`, mais `endereco` (str), `carrinho` (Carrinho).
 - **Métodos**:
-  - `adicionarAoCarrinho(produto: Produto, qtd: int) -> bool`: Adiciona item ao carrinho.
-  - `finalizarCompra() -> Pedido`: Transforma os itens do carrinho em um pedido de compra, atualiza o estoque e limpa o carrinho.
+- `adicionarAoCarrinho(produto: Produto, qtd: int) -> bool`: Adiciona item ao carrinho.
+- `finalizarCompra() -> Pedido`: Transforma os itens do carrinho em um pedido de compra, atualiza o estoque e limpa o carrinho.
+
+### `Administrador` (Subclasse)
+- **Atributos**: Herda `Usuario`, mais `cargo` (str).
+- **Métodos**: Herda todos os métodos de `Usuario` (como `fazerLogin`). Permite acesso administrativo para cadastrar novos produtos e gerenciar o status de pedidos de clientes.
 
 ### `Carrinho`
 - **Atributos**: `itens` (dict), `valorTotal` (float).
