@@ -1,0 +1,203 @@
+{
+    "produtos": [
+        {
+            "codigo": 101,
+            "nome": "Vestido Midi Floral",
+            "preco": 129.9,
+            "estoque": 7,
+            "tipo": "Roupa",
+            "tamanho": "M",
+            "cor": "Azul",
+            "tecido": "Viscose"
+        },
+        {
+            "codigo": 102,
+            "nome": "Blusa Cropped Linho",
+            "preco": 79.9,
+            "estoque": 15,
+            "tipo": "Roupa",
+            "tamanho": "P",
+            "cor": "Cru",
+            "tecido": "Linho"
+        },
+        {
+            "codigo": 103,
+            "nome": "Calça Alfaiataria",
+            "preco": 159.9,
+            "estoque": 8,
+            "tipo": "Roupa",
+            "tamanho": "G",
+            "cor": "Preta",
+            "tecido": "Poliéster"
+        },
+        {
+            "codigo": 201,
+            "nome": "Sandália Salto Bloco",
+            "preco": 149.9,
+            "estoque": 4,
+            "tipo": "Calçado",
+            "tamanho": 37,
+            "material": "Couro Sintético",
+            "marca": "Vizzano"
+        },
+        {
+            "codigo": 202,
+            "nome": "Tênis Casual Branco",
+            "preco": 119.9,
+            "estoque": 12,
+            "tipo": "Calçado",
+            "tamanho": 36,
+            "material": "Lona",
+            "marca": "Via Marte"
+        },
+        {
+            "codigo": 203,
+            "nome": "Scarpin Clássico",
+            "preco": 199.9,
+            "estoque": 4,
+            "tipo": "Calçado",
+            "tamanho": 38,
+            "material": "Camurça",
+            "marca": "Arezzo"
+        },
+        {
+            "codigo": 1234,
+            "nome": "Vestido",
+            "preco": 50.0,
+            "estoque": 10,
+            "tipo": "Roupa",
+            "tamanho": "S",
+            "cor": "Rosa",
+            "tecido": "Cetim"
+        },
+        {
+            "codigo": 6767,
+            "nome": "Six Seven",
+            "preco": 67.0,
+            "estoque": 65,
+            "tipo": "Calçado",
+            "tamanho": 67,
+            "material": "Couro",
+            "marca": "Six Seven's"
+        }
+    ],
+    "clientes": [
+        {
+            "cpf": "123.456.789-00",
+            "nome": "Rafaela Linck",
+            "email": "rafaela@email.com",
+            "senha": "123",
+            "tipo": "Cliente",
+            "endereco": "Rua das Flores, 123 - Centro"
+        },
+        {
+            "cpf": "987.654.321-11",
+            "nome": "Natalia Maciel",
+            "email": "natalia@email.com",
+            "senha": "123",
+            "tipo": "Cliente",
+            "endereco": "Av. Brasil, 456 - Bairro Lindo"
+        },
+        {
+            "cpf": "000.000.000-99",
+            "nome": "Natália Maciel (Admin)",
+            "email": "admin@email.com",
+            "senha": "123",
+            "tipo": "Admin",
+            "cargo": "Gerente Geral"
+        },
+        {
+            "cpf": "03349038",
+            "nome": "rafaela",
+            "email": "rafa@gmail.com",
+            "senha": "rafa",
+            "tipo": "Cliente",
+            "endereco": "rua lala"
+        },
+        {
+            "cpf": "423849435",
+            "nome": "nati",
+            "email": "nati@gmail.com",
+            "senha": "nati",
+            "tipo": "Admin",
+            "cargo": "vendedora"
+        },
+        {
+            "cpf": "05385456021",
+            "nome": "fulana",
+            "email": "fulana@gmail.com",
+            "senha": "1234",
+            "tipo": "Cliente",
+            "endereco": "92140050"
+        },
+        {
+            "cpf": "0475085092",
+            "nome": "luana",
+            "email": "luana@email.com",
+            "senha": "luana",
+            "tipo": "Admin",
+            "cargo": "Gerente"
+        }
+    ],
+    "pedidos": [
+        {
+            "idPedido": 5130,
+            "cliente_email": "rafaela@email.com",
+            "produtos": [
+                {
+                    "codigo": 101,
+                    "quantidade": 1
+                }
+            ],
+            "status": "Entregue"
+        },
+        {
+            "idPedido": 9105,
+            "cliente_email": "rafaela@email.com",
+            "produtos": [
+                {
+                    "codigo": 101,
+                    "quantidade": 1
+                },
+                {
+                    "codigo": 201,
+                    "quantidade": 1
+                }
+            ],
+            "status": "Enviado"
+        },
+        {
+            "idPedido": 3329,
+            "cliente_email": "fulana@gmail.com",
+            "produtos": [
+                {
+                    "codigo": 101,
+                    "quantidade": 1
+                }
+            ],
+            "status": "Pendente"
+        },
+        {
+            "idPedido": 2361,
+            "cliente_email": "rafaela@email.com",
+            "produtos": [
+                {
+                    "codigo": 6767,
+                    "quantidade": 1
+                }
+            ],
+            "status": "Pendente"
+        },
+        {
+            "idPedido": 8649,
+            "cliente_email": "rafaela@email.com",
+            "produtos": [
+                {
+                    "codigo": 6767,
+                    "quantidade": 1
+                }
+            ],
+            "status": "Preparando"
+        }
+    ]
+}
