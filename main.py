@@ -12,7 +12,6 @@ def main():
         app.mainloop()
     except Exception as e:
         print(f"Ocorreu um erro ao iniciar a aplicação gráfica: {e}")
-        print("Por favor, certifique-se de que o Python e o Tkinter estão configurados corretamente.")
         input("Pressione Enter para sair...")
 
 if __name__ == "__main__":
