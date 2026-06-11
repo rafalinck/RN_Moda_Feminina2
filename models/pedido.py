@@ -1,47 +1,24 @@
-from models.produto import Produto
 
-# =====================================================================
-# CLASSE: PEDIDO (Associação)
-# =====================================================================
-# [CONCEITO DE POO - ASSOCIAÇÃO]:
-# A classe 'Pedido' realiza a associação entre:
-# 1. Um objeto 'Cliente' (quem fez a compra).
-# 2. Vários objetos 'Produto' (os itens que foram comprados).
 class Pedido:
     def __init__(self, idPedido: int, cliente, produtosPedidos: list, status: str = "Pendente"):
         self.idPedido = int(idPedido)
-        # Associação direta com a classe Cliente
         self.cliente = cliente  
-        # Associação: Lista de dicionários [{"produto": objeto_Produto, "quantidade": int}]
         self.produtosPedidos = produtosPedidos  
-        # Situação do pedido (ex: Pendente, Preparando, Enviado, Entregue)
         self.status = str(status)
 
     def alterarStatus(self, novoStatus: str):
-        """
-        Permite que a administradora atualize o status logístico do pedido.
-        """
         self.status = str(novoStatus)
 
     def atualizarEstoque(self, quantidade: int = None):
-        """
-        Deduz as quantidades compradas do estoque disponível de cada produto.
-        """
         for item in self.produtosPedidos:
             prod = item["produto"]
             qtd_comprada = item["quantidade"]
             
-            # Subtrai a quantidade comprada do estoque físico do produto
             qtd_para_reduzir = quantidade if quantidade is not None else qtd_comprada
             prod.diminuirEstoque(qtd_para_reduzir)
 
     def gerarNotaFiscal(self) -> str:
-        """
-        Gera e formata o recibo/Nota Fiscal da compra.
-        [CONCEITO DE POO - POLIMORFISMO E ASSOCIAÇÃO]:
-        Este método acessa informações de cada produto utilizando o polimorfismo do método 
-        'exibirDetalhes()', garantindo que Roupas exibam tamanho/cor e Calçados exibam tamanho numérico.
-        """
+
         linhas = []
         linhas.append("==================================================")
         linhas.append("             R&N MODA FEMININA - NOTA FISCAL       ")
@@ -64,9 +41,6 @@ class Pedido:
             qtd = item["quantidade"]
             subtotal = prod.preco * qtd
             total_pedido += subtotal
-            
-            # [POLIMORFISMO]: Dependendo se 'prod' é Roupa ou Calçado, 
-            # exibirDetalhes() retornará chaves diferentes. Tratamos isso dinamicamente!
             detalhes = prod.exibirDetalhes()
             nome_exibicao = prod.nome
             if detalhes["Tipo"] == "Roupa":
