@@ -1,7 +1,6 @@
 import sys
 import os
 
-# Garante que o diretório atual está no path do Python
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from gui.app import RnModaApp
