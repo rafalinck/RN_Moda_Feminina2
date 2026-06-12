@@ -1,1 +1,12 @@
-# Pacote GUI do sistema R&N Moda Feminina
+# =====================================================================
+# EXPOSIÇÃO PÚBLICA DE CLASSES E ESTILOS DO PACOTE GUI
+# =====================================================================
+from .app import RnModaApp
+from .components import ScrollableFrame, CardProduto
+from .styles import *
+
+__all__ = [
+    "RnModaApp",
+    "ScrollableFrame",
+    "CardProduto"
+]

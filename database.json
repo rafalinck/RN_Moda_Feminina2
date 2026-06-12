@@ -4,7 +4,7 @@
             "codigo": 101,
             "nome": "Vestido Midi Floral",
             "preco": 129.9,
-            "estoque": 7,
+            "estoque": 6,
             "tipo": "Roupa",
             "tamanho": "M",
             "cor": "Azul",
@@ -198,6 +198,17 @@
                 }
             ],
             "status": "Preparando"
+        },
+        {
+            "idPedido": 9253,
+            "cliente_email": "rafaela@email.com",
+            "produtos": [
+                {
+                    "codigo": 101,
+                    "quantidade": 1
+                }
+            ],
+            "status": "Pendente"
         }
     ]
 }

@@ -1,0 +1,76 @@
+  classDiagram
+    direction LR
+    %% Diagrama de Objetos - Snapshot de uma Compra
+
+    %% Instância de Cliente
+    class cliente1 {
+        cpf = "123.456.789-00"
+        nome = "Rafaela Linck"
+        email = "rafaela@email.com"
+        senha = "123"
+        endereco = "Rua das Flores, 123 - Centro"
+        carrinho = carrinho1
+    }
+
+    %% Instância de Carrinho
+    class carrinho1 {
+        itens = [item1, item2]
+        valorTotal = 409.70
+    }
+    cliente1 --> carrinho1 : "associa"
+
+    %% Item 1 no Carrinho (Associação de Roupa)
+    class item1 {
+        produto = roupa101
+        quantidade = 2
+    }
+    carrinho1 --> item1 : "contém"
+
+    class roupa101 {
+        codigo = 101
+        nome = "Vestido Midi Floral"
+        preco = 129.90
+        estoque = 8
+        tamanho = "M"
+        cor = "Azul"
+        tecido = "Viscose"
+    }
+    item1 --> roupa101 : "refere-se a"
+
+    %% Item 2 no Carrinho (Associação de Calçado)
+    class item2 {
+        produto = calcado201
+        quantidade = 1
+    }
+    carrinho1 --> item2 : "contém"
+
+    class calcado201 {
+        codigo = 201
+        nome = "Sandália Salto Bloco"
+        preco = 149.90
+        estoque = 4
+        tamanho = 37
+        material = "Couro Sintético"
+        marca = "Vizzano"
+    }
+    item2 --> calcado201 : "refere-se a"
+
+    %% Instância de Pedido (Criado após finalizar compra)
+    class pedido9737 {
+        idPedido = 9737
+        cliente = cliente1
+        produtosPedidos = [item1, item2]
+        status = "Pendente"
+    }
+    pedido9737 --> cliente1 : "pertence a"
+    pedido9737 --> item1 : "inclui"
+    pedido9737 --> item2 : "inclui"
+
+    %% Instância de Administrador
+    class admin1 {
+        cpf = "000.000.000-99"
+        nome = "Natália Maciel (Admin)"
+        email = "admin@email.com"
+        senha = "123"
+        cargo = "Gerente Geral"
+    }

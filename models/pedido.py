@@ -1,4 +1,8 @@
+from models.produto import Produto
 
+# =====================================================================
+# CLASSE: PEDIDO
+# =====================================================================
 class Pedido:
     def __init__(self, idPedido: int, cliente, produtosPedidos: list, status: str = "Pendente"):
         self.idPedido = int(idPedido)
@@ -13,12 +17,10 @@ class Pedido:
         for item in self.produtosPedidos:
             prod = item["produto"]
             qtd_comprada = item["quantidade"]
-            
             qtd_para_reduzir = quantidade if quantidade is not None else qtd_comprada
             prod.diminuirEstoque(qtd_para_reduzir)
 
     def gerarNotaFiscal(self) -> str:
-
         linhas = []
         linhas.append("==================================================")
         linhas.append("             R&N MODA FEMININA - NOTA FISCAL       ")
@@ -26,7 +28,6 @@ class Pedido:
         linhas.append(f"Pedido ID: {self.idPedido}")
         linhas.append(f"Status: {self.status.upper()}")
         linhas.append("--------------------------------------------------")
-        # Acessa os atributos do objeto Cliente associado
         linhas.append(f"Cliente: {self.cliente.nome}")
         linhas.append(f"CPF: {self.cliente.cpf}")
         linhas.append(f"E-mail: {self.cliente.email}")
@@ -41,6 +42,7 @@ class Pedido:
             qtd = item["quantidade"]
             subtotal = prod.preco * qtd
             total_pedido += subtotal
+            
             detalhes = prod.exibirDetalhes()
             nome_exibicao = prod.nome
             if detalhes["Tipo"] == "Roupa":
@@ -48,7 +50,6 @@ class Pedido:
             elif detalhes["Tipo"] == "Calçado":
                 nome_exibicao += f" (Tam: {detalhes['Tamanho']})"
                 
-            # Limita o tamanho do texto para caber no leiaute do recibo
             if len(nome_exibicao) > 22:
                 nome_exibicao = nome_exibicao[:19] + "..."
                 
@@ -61,5 +62,5 @@ class Pedido:
         linhas.append("==================================================")
         
         nota = "\n".join(linhas)
-        print(nota)  # Imprime no terminal para verificação
+        print(nota)
         return nota

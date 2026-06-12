@@ -2,11 +2,10 @@ import tkinter as tk
 from tkinter import ttk
 from gui.styles import *
 
+# =====================================================================
+# CLASSE: SCROLLABLEFRAME
+# =====================================================================
 class ScrollableFrame(tk.Frame):
-    """
-    Um frame Tkinter com scrollbar embutida, ideal para listar
-    muitos produtos ou itens no carrinho.
-    """
     def __init__(self, container, bg=BG_DARK, *args, **kwargs):
         super().__init__(container, *args, **kwargs)
         self.configure(bg=bg)
@@ -23,20 +22,14 @@ class ScrollableFrame(tk.Frame):
         )
 
         self.canvas_window = self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
-        
-        # Garante que o frame rolável se expanda na largura do canvas
         self.canvas.bind('<Configure>', self._on_canvas_configure)
-
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
 
         self.canvas.pack(side="left", fill="both", expand=True)
         self.scrollbar.pack(side="right", fill="y")
-        
-        # Suporte a scroll com a roda do mouse
         self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
 
     def _on_canvas_configure(self, event):
-        # Redimensiona o frame interno para corresponder à largura do canvas
         self.canvas.itemconfig(self.canvas_window, width=event.width)
 
     def _on_mousewheel(self, event):
@@ -44,11 +37,10 @@ class ScrollableFrame(tk.Frame):
             self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
 
+# =====================================================================
+# CLASSE: CARDPRODUTO
+# =====================================================================
 class CardProduto(tk.Frame):
-    """
-    Componente visual que representa um produto (Roupa ou Calçado)
-    na vitrine, exibindo seus detalhes e permitindo adicionar ao carrinho.
-    """
     def __init__(self, parent, produto, on_adicionar_callback, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.produto = produto
@@ -56,10 +48,8 @@ class CardProduto(tk.Frame):
         
         self.configure(bg=BG_CARD, bd=1, highlightthickness=0, highlightbackground=COLOR_BORDER)
         
-        # Detalhes específicos de Roupa/Calçado (Polimorfismo em ação!)
         detalhes = produto.exibirDetalhes()
         
-        # Cabeçalho: Nome e Tipo
         lbl_tipo = tk.Label(self, text=detalhes["Tipo"].upper(), fg=COLOR_PRIMARY, font=FONT_BODY_SMALL)
         aplicar_estilo_label(lbl_tipo, font=FONT_BODY_SMALL, fg=COLOR_PRIMARY)
         lbl_tipo.pack(anchor="w", padx=15, pady=(15, 2))
@@ -68,28 +58,24 @@ class CardProduto(tk.Frame):
         aplicar_estilo_label(lbl_nome, font=FONT_TITLE_SMALL)
         lbl_nome.pack(anchor="w", padx=15, pady=(0, 10))
         
-        # Informações Específicas baseadas no Tipo de Produto (Demonstração visual do Polimorfismo)
         frame_specs = tk.Frame(self, bg=BG_CARD)
         frame_specs.pack(fill="x", padx=15, pady=5)
         
         if detalhes["Tipo"] == "Roupa":
             specs_text = f"Tamanho: {detalhes['Tamanho']}  |  Cor: {detalhes['Cor']}\nTecido: {detalhes['Tecido']}"
-        else:  # Calçado
+        else:
             specs_text = f"Tamanho: {detalhes['Tamanho']}  |  Material: {detalhes['Material']}\nMarca: {detalhes['Marca']}"
             
         lbl_specs = tk.Label(frame_specs, text=specs_text, justify="left", anchor="w")
         aplicar_estilo_label(lbl_specs, font=FONT_BODY_SMALL, fg=TEXT_SECONDARY)
         lbl_specs.pack(anchor="w")
 
-        # Divisor
         div = tk.Frame(self, height=1, bg=COLOR_BORDER)
         div.pack(fill="x", padx=15, pady=10)
 
-        # Rodapé: Preço, Qtd e Botão Adicionar
         frame_rodape = tk.Frame(self, bg=BG_CARD)
         frame_rodape.pack(fill="x", padx=15, pady=(0, 15))
         
-        # Preço e Estoque
         frame_preco_estoque = tk.Frame(frame_rodape, bg=BG_CARD)
         frame_preco_estoque.pack(side="left", fill="y")
         
@@ -103,12 +89,10 @@ class CardProduto(tk.Frame):
         aplicar_estilo_label(lbl_estoque, font=FONT_BODY_SMALL, fg=fg_estoque)
         lbl_estoque.pack(anchor="w")
         
-        # Controles de quantidade e Botão de Ação
         if produto.estoque > 0:
             frame_compra = tk.Frame(frame_rodape, bg=BG_CARD)
             frame_compra.pack(side="right", fill="y")
             
-            # Label "Qtd:"
             lbl_qtd = tk.Label(frame_compra, text="Qtd:")
             aplicar_estilo_label(lbl_qtd, font=FONT_BODY_SMALL, fg=TEXT_SECONDARY)
             lbl_qtd.pack(side="left", padx=(0, 2))
@@ -128,7 +112,6 @@ class CardProduto(tk.Frame):
             )
             self.spin_qtd.pack(side="left", padx=(0, 8), ipady=2)
             
-            # Botão
             btn_add = tk.Button(
                 frame_compra,
                 text="Comprar",
@@ -137,7 +120,6 @@ class CardProduto(tk.Frame):
             aplicar_estilo_botao(btn_add, bg=COLOR_PRIMARY, fg="#FFFFFF")
             btn_add.pack(side="left")
         else:
-            # Produto Esgotado
             lbl_esgotado = tk.Label(frame_rodape, text="Esgotado")
             aplicar_estilo_label(lbl_esgotado, font=FONT_BODY_BOLD, fg=COLOR_DANGER)
             lbl_esgotado.pack(side="right", padx=5)
